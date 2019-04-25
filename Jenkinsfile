@@ -1,5 +1,9 @@
 node {
 stage ('Checkout Repository') {
+  deleteDir()
+  checkout scm
+}
+stage ('Checkout Repository') {
 // Get our repo cloned and prepped for action
 }
 stage ('Render Configurations') {
@@ -19,11 +23,5 @@ stage ('Promote Configurations to Production') {
 }
 stage ('Production Functional/Integration Testing') {
 // Ping stuff and make sure we didn't blow up prod!
-}
-}
-node {
-  stage ('Checkout Repository') {
-    deleteDir()
-    checkout scm
 }
 }
