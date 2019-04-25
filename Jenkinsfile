@@ -22,8 +22,8 @@ stage ('Production Functional/Integration Testing') {
 }
 }
 node {
-stage ('Checkout Repository') {
-deleteDir()
-checkout scm
+  stage ('Checkout Repository') {
+    deleteDir()
+    checkout scm
 }
 }
