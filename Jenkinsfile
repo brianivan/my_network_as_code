@@ -3,11 +3,14 @@ stage ('Checkout Repository') {
   deleteDir()
   checkout scm
 }
-stage ('Checkout Repository') {
-// Get our repo cloned and prepped for action
+stage ('Validate Generate Configurations Playbook') {
+sh 'ansible-playbook generate_configurations.yaml --syntax-check'
 }
 stage ('Render Configurations') {
 sh 'ansible-playbook generate_configurations.yaml'
+}
+stage ('Unit Testing') {
+sh 'ansible-playbook depoy_configurations.yaml --syntax-check'
 }
  stage ('Unit Testing') {
 // Do some kind of "linting" on our code to make sure we didn't bugger anything up too badly
